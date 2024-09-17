@@ -11,7 +11,7 @@
 
 __title__ = "py-database"
 __description__ = "Python files used as databases."
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 __author__ = "Tathya Garg"
 __author_email__ = "coding.tathya@gmail.com"
 __license__ = "MIT"
