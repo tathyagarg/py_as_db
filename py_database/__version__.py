@@ -9,7 +9,7 @@
 # o888o      `Y8P'
 
 
-__title__ = "py-database"
+__title__ = "py_database"
 __description__ = "Python files used as databases."
 __version__ = "1.2.2"
 __author__ = "Tathya Garg"
