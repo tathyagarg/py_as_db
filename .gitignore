@@ -2,3 +2,4 @@
 .venv/
 build/
 py_as_db.egg-info/
+dist/
