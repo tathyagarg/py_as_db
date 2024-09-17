@@ -7,28 +7,14 @@
 #  888bod8P'     .8'     ooooooooooo `Y8bod88P" `Y888""8o   "888" `Y888""8o  `Y8bod8P' `Y888""8o 8""888P' `Y8bod8P'
 #  888       .o..P'
 # o888o      `Y8P'
-"""
-Python Database Library
------------------------
 
-py_database is a library which lets you use python files as databases
 
-:copyright: (c) 2024 by Tathya Garg
-:license: MIT, see LICENSE for more details.
-"""
+__title__ = "py_as_db"
+__description__ = "Python files used as databases."
+__version__ = "1.2.2"
+__author__ = "Tathya Garg"
+__author_email__ = "coding.tathya@gmail.com"
+__license__ = "MIT"
+__copyright__ = "Copyright Tathya Garg"
 
-from . import database, exceptions
-
-from .database import Database
-from .exceptions import *
-
-from .__version__ import (
-    __author__,
-    __author_email__,
-    __copyright__,
-    __description__,
-    __license__,
-    __love__,
-    __title__,
-    __version__
-)
+__love__ = "\U00002764 \U00002764"

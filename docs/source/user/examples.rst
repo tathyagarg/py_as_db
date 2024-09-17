@@ -7,7 +7,7 @@ Making a database
 -----------------
 In this library, a database is just a directory. Here's how you can make a database::
 
-    >>> import py_database as pydb
+    >>> import py_as_db as pydb
 
     >>> db_name: str = "my_awesome_database"
 

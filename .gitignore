@@ -1,4 +1,4 @@
 *.pyc
 .venv/
 build/
-py_database.egg-info/
+py_as_db.egg-info/
