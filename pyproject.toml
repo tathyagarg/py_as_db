@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "py_database"
 description = "Python files used as databases."
-version = "1.0.1"
+version = "1.1.0"
 requires-python = ">= 3.12"
 authors = [
     {name = "Tathya Garg", email = "coding.tathya@gmail.com"}
@@ -21,7 +21,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12"
 ]
 [tool.bumpver]
-current_version = "1.0.1"
+current_version = "1.1.0"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
@@ -41,5 +41,5 @@ push = true
     "{version}",
     "{pep440_version}",
 ]
-"src/py_database/__version__.py" = ['__version__ = "{version}"']
-"docs/source/conf.py" = ["release = '{version}'"]
+"src/py_database/__version__.py" = ['^__version__ = "{version}"$']
+"docs/source/conf.py" = ["release = '{version}'$"]
