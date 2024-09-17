@@ -39,3 +39,4 @@ push = true
 ]
 "src/py_database/__version__.py" = ['^__version__ = "{version}"$']
 "docs/source/conf.py" = ['release = "{version}"$']
+"setup.py" = ['version="{version}",$']
