@@ -11,6 +11,5 @@ setup(
     long_description=long_description,
     author="Tathya Garg",
     author_email="coding.tathya@gmail.com",
-    packages=["py_database"],
-    install_requires=['wheel']
+    packages=["py_database"]
 )
