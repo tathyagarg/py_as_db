@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 seaturtle_db - Using Python files as a database
-==============================================
+===============================================
 
 Release v\ |version| (:doc:`/user/install`)
 
