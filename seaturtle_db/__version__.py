@@ -8,7 +8,7 @@
 
 __title__ = "seaturtle_db"
 __description__ = "Python files used as databases."
-__version__ = "1.2.2"
+__version__ = "2.0.0"
 __author__ = "Tathya Garg"
 __author_email__ = "coding.tathya@gmail.com"
 __license__ = "MIT"
