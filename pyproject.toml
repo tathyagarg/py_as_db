@@ -37,6 +37,6 @@ push = true
     'current_version = "{version}"',
     'version = "{version}"'
 ]
-"src/seaturtle_db/__version__.py" = ['^__version__ = "{version}"$']
+"seaturtle_db/__version__.py" = ['^__version__ = "{version}"$']
 "docs/source/conf.py" = ['release = "{version}"$']
 "setup.py" = ['version="{version}",$']
