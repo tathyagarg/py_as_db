@@ -18,6 +18,10 @@ py_database is a library which lets you use python files as databases
 """
 
 from . import database, exceptions
+
+from .database import Database
+from .exceptions import *
+
 from .__version__ import (
     __author__,
     __author_email__,

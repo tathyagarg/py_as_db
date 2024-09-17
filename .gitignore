@@ -1,1 +1,4 @@
 *.pyc
+.venv/
+build/
+py_database.egg-info/

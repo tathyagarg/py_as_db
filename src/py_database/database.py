@@ -15,26 +15,27 @@ class Database:
             dir_name: str,
             **kwargs
     ) -> None:
-        self.dir_name = dir_name.split('/', 1)[1]
+        self.dir_name = dir_name.split('/', 1)[-1]
         self.create_if_not_exists = kwargs.get('create_if_not_exists', True) and kwargs.get('cine', True)
 
         self.dir_as_importable = self.dir_name.replace('/', '.')
 
         self.use_dir = pathlib.Path(sys.path[0]) / self.dir_name
 
+        with open('hello.txt', 'w') as f: f.write(str(self.use_dir))
+
         self.verify_database_existence()
 
     def verify_database_existence(self) -> None:
         """Verifies the existence of the database directory, and creates it if it doesn't exist and
-        the :instance_attribute:`Database.create_if_not_exists` has been set to False.
+        `Database.create_if_not_exists` has been set to False.
 
-        :raises DatabaseNotFoundError: If the database directory does not exist and
-            the :instance_attribute:`Database.create_if_not_exists` has been set to False
+        :raises DatabaseNotFoundError: If the database directory does not exist and `Database.create_if_not_exists` has been set to False
         """
 
         if not self.use_dir.exists():
             if self.create_if_not_exists:
-                return os.makedirs(self.dir_name)
+                return os.makedirs(self.use_dir)
 
             raise DatabaseNotFoundError(
                 f"The specified database directory {self.dir_name!r} was not found and the `create_if_not_exists` was set to False."
