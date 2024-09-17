@@ -3,7 +3,7 @@ requires = ["setuptools >= 75.1"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "py_as_db"
+name = "seaturtle_db"
 description = "Python files used as databases."
 version = "1.2.2"
 requires-python = ">= 3.12"
@@ -37,6 +37,6 @@ push = true
     'current_version = "{version}"',
     'version = "{version}"'
 ]
-"src/py_as_db/__version__.py" = ['^__version__ = "{version}"$']
+"src/seaturtle_db/__version__.py" = ['^__version__ = "{version}"$']
 "docs/source/conf.py" = ['release = "{version}"$']
 "setup.py" = ['version="{version}",$']

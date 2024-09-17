@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'py_as_db'
+project = 'seaturtle_db'
 copyright = '2024, Tathya Garg'
 author = 'Tathya Garg'
 release = "1.2.2"
@@ -35,7 +35,7 @@ import sys
 
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
-import py_as_db
+import seaturtle_db
 
-version = py_as_db.__version__
+version = seaturtle_db.__version__
 #

@@ -1,5 +1,5 @@
 *.pyc
 .venv/
 build/
-py_as_db.egg-info/
+seaturtle_db.egg-info/
 dist/
