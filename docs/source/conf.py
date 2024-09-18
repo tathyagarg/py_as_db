@@ -9,7 +9,7 @@
 project = 'seaturtle_db'
 copyright = '2024, Tathya Garg'
 author = 'Tathya Garg'
-release = "2.0.0"
+release = "3.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

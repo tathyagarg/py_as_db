@@ -5,7 +5,7 @@ with open('README.md') as readme:
 
 setup(
     name='seaturtle_db',
-    version="2.0.0",
+    version="3.0.0",
     license="MIT",
     description="Python files used as databases.",
     long_description=long_description,
