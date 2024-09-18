@@ -9,22 +9,22 @@ from .exceptions import (
     RecordAlreadyExists
 )
 
+from .record import Record
+
 class Database:
     def __init__(
             self,
-            dir_name: str,
+            db_name: str,
             **kwargs
     ) -> None:
-        self.dir_name = dir_name.split('/', 1)[-1]
+        self.db_name = db_name
         self.create_if_not_exists = kwargs.get('create_if_not_exists', True) and kwargs.get('cine', True)
 
-        self.dir_as_importable = self.dir_name.replace('/', '.')
-
-        self.use_dir = pathlib.Path(sys.path[0]) / self.dir_name
-
-        with open('hello.txt', 'w') as f: f.write(str(self.use_dir))
+        self.db_location = pathlib.Path(sys.path[0]) / self.db_name
 
         self.verify_database_existence()
+
+        self.records: list[Record] = []
 
     def verify_database_existence(self) -> None:
         """Verifies the existence of the database directory, and creates it if it doesn't exist and
@@ -33,58 +33,58 @@ class Database:
         :raises DatabaseNotFoundError: If the database directory does not exist and `Database.create_if_not_exists` has been set to False
         """
 
-        if not self.use_dir.exists():
+        if not self.db_location.exists():
             if self.create_if_not_exists:
-                return os.makedirs(self.use_dir)
+                return os.makedirs(self.db_location)
 
             raise DatabaseNotFoundError(
-                f"The specified database directory {self.dir_name!r} was not found and the `create_if_not_exists` was set to False."
+                f"The specified database directory {self.db_location!r} was not found and the `create_if_not_exists` was set to False."
             )
 
-    def read_record(self, record: str) -> dict:
-        if not (self.use_dir / f'{record}.py').exists():
-            raise RecordNotFoundError(
-                f"The specified record {record!r} was not found in the database directory {self.dir_as_importable!r}"
-            )
+    def read_record(self, name: str) -> Record:
+        record = Record.read(
+            self.db_name,
+            name
+        )
 
-        module =  getattr(__import__(f'{self.dir_as_importable}.{record}'), record)
-        importlib.reload(module)
+        for rec in self.records:
+            if rec.name != name:
+                break
+        else:
+            self.records.append(record)
 
-        return module.data
+        return record
 
-    def create_record(self, record: str, **kwargs) -> None:
-        overwrite_if_exists: bool = kwargs.get('overwrite_if_exists', True) and kwargs.get('oie', True) and kwargs.get('overwrite', True)
+    def create_record(self, name: str, *, overwrite: bool = False, data: dict = {}) -> Record:
+        record = Record.create(
+            self.db_name,
+            name,
+            overwrite=overwrite,
+            data=data
+        )
 
-        if (self.use_dir / f'{record}.py').exists():
-            if overwrite_if_exists:
-                with open(self.use_dir / f'{record}.py', 'w') as record:
-                    record.write('data = {}')
+        for rec in self.records:
+            if rec.name != name:
+                break
+        else:
+            self.records.append(record)
 
-                return
+        return record
 
-            raise RecordAlreadyExists(
-                f"The specified record {record!r} already exists and `overwrite` was set to False"
-            )
+    def update_record(self, name: str, data: dict) -> None:
+        record = Record.fetch(
+            self.db_name,
+            name
+        )
 
-        with open(self.use_dir / f'{record}.py', 'w') as record:
-            record.write('data = {}')
+        record.data = data
 
-        return
+        record.update()
 
-    def update_record(self, record: str, data: dict) -> None:
-        if not (self.use_dir / f'{record}.py').exists():
-            raise RecordNotFoundError(
-                f"The specified record {record!r} was not found in the database directory {self.dir_as_importable!r}"
-            )
+    def delete_record(self, name: str) -> None:
+        record = Record.fetch(
+            self.db_name,
+            name
+        )
 
-        with open(self.use_dir / f'{record}.py', 'w') as record:
-            record.write(f'{data = }')
-
-    def delete_record(self, record: str) -> None:
-        if not (self.use_dir / f'{record}.py').exists():
-            raise RecordNotFoundError(
-                f"The specified record {record!r} was not found in the database directory {self.dir_as_importable!r}"
-            )
-
-        os.remove(self.use_dir / f'{record}.py')
-
+        record.delete()

@@ -18,6 +18,7 @@ seaturtle_db is a library which lets you use python files as databases
 from . import database, exceptions
 
 from .database import Database
+from .record import Record, RecordLabel
 from .exceptions import *
 
 from .__version__ import (
