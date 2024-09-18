@@ -15,6 +15,9 @@ Release v\ |version| (:doc:`/user/install`)
     :target: https://github.com/tathyagarg/seaturtle_db
     :alt: Total GitHub commits to `seaturtle_db`
 
+.. attention::
+    These docs are outdated but will be updated soon.
+
 **seaturtle_db** is a Python library to make databases in the form of python files. Obviously, this is just a joke and serves little to no practical benefits over other databasing software. This won't stop me from making this project way over the top.
 
 .. note::
